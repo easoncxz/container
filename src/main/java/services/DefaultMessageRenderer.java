@@ -7,11 +7,12 @@ public class DefaultMessageRenderer implements MessageRenderer {
 
 	private MessageProvider mp;
 
+	/**
+	 * Constructor injection intended.
+	 * 
+	 * @param mp
+	 */
 	public DefaultMessageRenderer(MessageProvider mp) {
-		this.mp = mp;
-	}
-
-	public void setMessageProvider(MessageProvider mp) {
 		this.mp = mp;
 	}
 

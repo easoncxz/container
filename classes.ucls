@@ -69,7 +69,7 @@
   </dependency>  
   <association id="11">    
     <end type="SOURCE" refId="3" navigable="false">      
-      <attribute id="12" name="c"/>      
+      <attribute id="12" name="theSingleton"/>      
       <multiplicity id="13" minimum="0" maximum="1"/>    
     </end>    
     <end type="TARGET" refId="3" navigable="true"/>    

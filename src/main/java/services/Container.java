@@ -3,24 +3,25 @@ package services;
 import java.util.HashMap;
 import java.util.Map;
 
-import my_artifact_id.MessageProvider;
-import my_artifact_id.MessageRenderer;
-
 public class Container {
 
 	private Container() {
 		// to disable the default (no-argument) public constructor.
 	}
 
-	private static Container c;
+	private static Container theSingleton;
 
 	public static Container getSingleton() {
-		if (c == null) {
-			c = new Container();
+		if (theSingleton == null) {
+			theSingleton = new Container();
 		}
-		return c;
+		return theSingleton;
 	}
 
+	/**
+	 * Maintains a collection of components. Maps components (Object objects) to
+	 * component names (String objects).
+	 */
 	private Map<Object, String> components = new HashMap<Object, String>();
 
 	{
@@ -33,6 +34,10 @@ public class Container {
 		this.components.put(dmr, "myDefaultMessageRenderer");
 	}
 
+	/**
+	 * @param serviceClass
+	 * @return The first (or only) service of class serviceClass.
+	 */
 	public <T> T getService(Class<T> serviceClass) {
 		if (serviceClass != null) {
 			Class<T> c = serviceClass;
@@ -45,6 +50,12 @@ public class Container {
 		return null;
 	}
 
+	/**
+	 * @param serviceClass
+	 * @param name
+	 * @return The exact component specified by the class serviceClass and the
+	 *         name name.
+	 */
 	public <T> T getService(Class<T> serviceClass, String name) {
 		if (serviceClass != null) {
 			Class<T> c = serviceClass;
